@@ -1,6 +1,7 @@
 #pragma once
 #include <memory>
 #include "message.h"
+#include "level.h"
 #include "string_view"
 #include "iostream"
 #include <chrono>
@@ -23,10 +24,11 @@ namespace logsar {
         Logger& operator=(const Logger&) = delete;
         Logger(Logger&&) = delete;
         Logger& operator=(Logger&&) noexcept;
-        void info(std::string_view message);
-        void debug(std::string_view message);
-        void error(std::string_view message);
-        void warn(std::string_view message);
+        void writeLog(LogLevel level, std::string_view message);
+        void info(std::string_view message) const;
+        void debug(std::string_view message) const;
+        void error(std::string_view message) const;
+        void warn(std::string_view message) const;
 
     private:
         std::unique_ptr<LoggerImpl> impl_;

@@ -8,6 +8,7 @@ set(CMAKE_CXX_STANDARD 23)
 # -------------------------------------------------------------
 add_library(logsar SHARED
         src/logger.cc
+        src/utils/sink.cc
 )
 
 target_include_directories(logsar PUBLIC
