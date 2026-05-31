@@ -9,7 +9,7 @@ namespace logsar {
     class LoggerImpl {
         std::ofstream file_;
 
-        std::string timeToString(const std::chrono::system_clock::time_point tp) {
+        static std::string timeToString(const std::chrono::system_clock::time_point tp) {
             const std::time_t time = std::chrono::system_clock::to_time_t(tp);
             const std::tm tm = *std::localtime(&time);
 
@@ -32,8 +32,8 @@ namespace logsar {
         public:
         LoggerImpl(): file_("logs.json", std::ios::app) {}
 
-        void info(std::string_view message) {
-            LogMessage logMessage{
+        void info(const std::string_view message) {
+            const LogMessage logMessage{
                 LogLevel::INFO,
                 std::chrono::system_clock::now(),
                 message
@@ -42,8 +42,8 @@ namespace logsar {
             log(logMessage);
         }
 
-        void debug(std::string_view message) {
-            LogMessage logMessage{
+        void debug(const std::string_view message) {
+            const LogMessage logMessage{
                 LogLevel::DEBUG,
                 std::chrono::system_clock::now(),
                 message
@@ -52,8 +52,8 @@ namespace logsar {
             log(logMessage);
         }
 
-        void error(std::string_view message) {
-            LogMessage logMessage{
+        void error(const std::string_view message) {
+            const LogMessage logMessage{
                 LogLevel::ERROR,
                 std::chrono::system_clock::now(),
                 message
@@ -62,8 +62,8 @@ namespace logsar {
             log(logMessage);
         }
 
-        void warn(std::string_view message) {
-            LogMessage logMessage{
+        void warn(const std::string_view message) {
+            const LogMessage logMessage{
                 LogLevel::WARN,
                 std::chrono::system_clock::now(),
                 message

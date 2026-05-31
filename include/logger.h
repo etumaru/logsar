@@ -3,8 +3,6 @@
 #include "message.h"
 #include "level.h"
 #include "string_view"
-#include "iostream"
-#include <chrono>
 
 namespace logsar {
     class LoggerImpl;
